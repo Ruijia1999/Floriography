@@ -45,4 +45,14 @@ public class PlayerMove : MonoBehaviour
         
         
     }
+
+    //void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+        
+    //    if (hit != null && hit.collider.tag == "NPC")
+    //    {
+    //        hit.collider.GetComponent<NPCInteraction>().OnPlayerNear();
+    //    }
+
+    //}
 }

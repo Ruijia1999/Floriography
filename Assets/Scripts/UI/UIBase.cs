@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class UIBase : MonoBehaviour
 {
     public string str_UIPath;
@@ -22,5 +22,11 @@ public class UIBase : MonoBehaviour
     {
         string name = this.GetType().ToString();
         UIManager.Instance.CloseUI(name);
+    }
+
+    protected virtual void DestroyUI()
+    {
+        string name = this.GetType().ToString();
+        UIManager.Instance.DestroyUI(name);
     }
 }

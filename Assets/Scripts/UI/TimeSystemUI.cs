@@ -9,7 +9,6 @@ public class TimeSystemUI : UIBase
     public override void Init(params object[] args)
     {
         base.Init(args);
-        str_UIPath = "TimeSystemUI";
         layer = UILayer.panel;
     }
     public override void OnShowing(params object[] args) {

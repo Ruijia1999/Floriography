@@ -28,7 +28,6 @@ public class TimeSystemController : MonoBehaviour
     void Start()
     {
         b_isRunning = true;
-        UIManager.Instance.OpenUI<TimeSystemUI>("UIPrefabs/TimeSystemUI");
         DontDestroyOnLoad(this);
         timeInGame.hour = f_initialTime;
         go_mainLight = GameObject.Find("MainLight");
