@@ -15,11 +15,13 @@ public class DialogSystemController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DialogComplete = OnDialogComplete;
         }
+
     }
     void Start()
     {
-        DialogComplete = OnDialogComplete;
+        
     }
 
     void OnDialogComplete()
