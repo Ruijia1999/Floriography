@@ -10,10 +10,15 @@ public class BackpackUI : UIBase
     {
         base.Init();
         layer = UILayer.scene;
+        backpackContent = null;
         
     }
     public override void OnShowing(params object[] args) {
-        backpackContent = new BagBase(go_UI.transform.Find("content"));
+        if (backpackContent == null)
+        {
+            backpackContent = new BagBase(go_UI.transform.Find("content"));
+        }
+        
     }
     public override void OnShowed(params object[] args) { }
     public override void Update() { }
