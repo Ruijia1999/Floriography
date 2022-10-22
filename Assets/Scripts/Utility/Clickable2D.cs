@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Clickable : MonoBehaviour
+public class Clickable2D : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Backpack : MonoBehaviour
+public class FireworkSettingUI : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

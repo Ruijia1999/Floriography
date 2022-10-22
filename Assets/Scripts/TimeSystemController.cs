@@ -10,6 +10,7 @@ public struct TimeSystemInGame
 
 public class TimeSystemController : MonoBehaviour
 {
+    public static TimeSystemController Instance;
     TimeSystemInGame timeInGame;
     bool b_isRunning;
 
@@ -22,9 +23,16 @@ public class TimeSystemController : MonoBehaviour
     float f_timeSpeed;
 
     GameObject go_mainLight;
-    
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else Destroy(gameObject);
+    }
     void Start()
     {
         b_isRunning = true;
@@ -40,7 +48,7 @@ public class TimeSystemController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         if (b_isRunning)
@@ -63,6 +71,7 @@ public class TimeSystemController : MonoBehaviour
        
         
     }
+
     private void UpdateLight()
     {
         if(go_mainLight.GetComponent<Light>().intensity < 0)
@@ -79,5 +88,15 @@ public class TimeSystemController : MonoBehaviour
     private void UpdateClock()
     {
         UIManager.Instance.GetUI<TimeSystemUI>().UpdateClock(timeInGame);
+    }
+
+    public void Pause()
+    {
+        b_isRunning = false;
+    }
+
+    public void Continue()
+    {
+        b_isRunning = true;
     }
 }

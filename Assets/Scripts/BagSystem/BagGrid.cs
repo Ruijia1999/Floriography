@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BagGrid
+public class BagGrid: MonoBehaviour
 {
     public string s_itemName;
     public int i_itemQuantity;
     Image img_item;
     Text txt_itemQuantity;
 
-    public BagGrid(Transform trs_grid)
+    void Start ()
     {
         s_itemName = "";
         i_itemQuantity = 0;
-        img_item = trs_grid.Find("img_item").GetComponent<Image>();
-        txt_itemQuantity = trs_grid.Find("txt_quantity").GetComponent<Text>();
+        img_item = transform.Find("img_item").GetComponent<Image>();
+        txt_itemQuantity = transform.Find("txt_quantity").GetComponent<Text>();
 
     }
     public int AddItem(string s_name, int i_qauntity)

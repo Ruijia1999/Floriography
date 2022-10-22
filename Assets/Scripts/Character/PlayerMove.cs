@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static PlayerMove Instance;
+    bool b_enabled;
+
     [SerializeField]
     float f_moveSpeed;
 
@@ -18,7 +21,16 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
         characterController = gameObject.GetComponent<CharacterController>();
+        Enable();
     }
     private void Update()
     {
@@ -26,8 +38,8 @@ public class PlayerMove : MonoBehaviour
     }
     void FixedUpdate()
     {
-
-        MoveControlBySimpleMove();
+        if(b_enabled)
+            MoveControlBySimpleMove();
 
     }
     void MoveControlBySimpleMove()
@@ -46,9 +58,18 @@ public class PlayerMove : MonoBehaviour
         
     }
 
+    public void Disable()
+    {
+        b_enabled = false;
+    }
+
+    public void Enable()
+    {
+        b_enabled = true;
+    }
     //void OnControllerColliderHit(ControllerColliderHit hit)
     //{
-        
+
     //    if (hit != null && hit.collider.tag == "NPC")
     //    {
     //        hit.collider.GetComponent<NPCInteraction>().OnPlayerNear();
