@@ -38,7 +38,7 @@ public class TimeSystemController : MonoBehaviour
         b_isRunning = true;
         timeInGame.hour = f_initialTime;
         go_mainLight = GameObject.Find("MainLight");
-        go_mainLight.transform.rotation = Quaternion.Euler(0, -135, 0);
+        go_mainLight.transform.rotation = Quaternion.Euler(0, 45, 0);
         float rotateAngle = (timeInGame.hour-6) * 30;
         go_mainLight.transform.Rotate(Vector3.right, rotateAngle);
 

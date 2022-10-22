@@ -30,8 +30,8 @@ public class OptionUI : UIBase
         txt_tip = go_UI.transform.Find("img_bg/tip/text").GetComponent<TextMeshProUGUI>();
         txt_tip.text = (string)args[2];
 
-        btn_YES.onClick.AddListener(Close);
-        btn_NO.onClick.AddListener(Close);
+        btn_YES.onClick.AddListener(DestroyUI);
+        btn_NO.onClick.AddListener(DestroyUI);
 
         if (_yesClicked != null)
         {
@@ -66,11 +66,6 @@ public class OptionUI : UIBase
     public override void OnClosed(params object[] args)
     {
 
-    }
-
-    private void Close()
-    {
-        UIManager.Instance.DestroyUI("OptionUI");
     }
 
 }
