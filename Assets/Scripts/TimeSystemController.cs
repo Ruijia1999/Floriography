@@ -28,7 +28,6 @@ public class TimeSystemController : MonoBehaviour
     void Start()
     {
         b_isRunning = true;
-        DontDestroyOnLoad(this);
         timeInGame.hour = f_initialTime;
         go_mainLight = GameObject.Find("MainLight");
         go_mainLight.transform.rotation = Quaternion.Euler(0, -135, 0);

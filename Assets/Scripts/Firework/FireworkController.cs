@@ -52,7 +52,7 @@ public class FireworkController : MonoBehaviour
         //     colorKeys[i].time = gradient.colorKeys[i].time;
         // }
         
-        Gradient newGradient;
+ 
         // newGradient.SetKeys(colorKeys,alphaKeys);
         // vfx.SetGradient(
         //     parameter.buff.HasFlag(ProjectileBuff.Gradient) ? "Gradient_Color" :"Single_Color", 

@@ -27,9 +27,9 @@ public class UIManager : MonoBehaviour
         Instance = this;
         InitLayer();
         dic_UI = new Dictionary<string, UIBase>();
-        UIManager.Instance.OpenUI<TimeSystemUI>("UIPrefabs/TimeSystemUI");
-        UIManager.Instance.OpenUI<NPCTipUI>("UIPrefabs/NPCTipUI");
-        UIManager.Instance.OpenUI<BackpackUI>("UIPrefabs/BackpackUI");
+        //UIManager.Instance.OpenUI<TimeSystemUI>("UIPrefabs/TimeSystemUI");
+        //UIManager.Instance.OpenUI<NPCTipUI>("UIPrefabs/NPCTipUI");
+        //UIManager.Instance.OpenUI<BackpackUI>("UIPrefabs/BackpackUI");
 
     }
 

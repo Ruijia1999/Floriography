@@ -13,11 +13,6 @@ public class NPCTipUI : UIBase
         go_exclamationMark = Resources.Load<GameObject>("UIPrefabs/NPCTipUI/exclamationMark");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void ShowTip(Transform trs_tipPos)
     {
         go_tip.SetActive(true);
