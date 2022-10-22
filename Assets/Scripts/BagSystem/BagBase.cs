@@ -2,21 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BagBase
+public class BagBase: MonoBehaviour
 {
     List<BagGrid> lst_bagGrids;
     Dictionary<string, BagItem> dct_items;
-    int gridNumber;
+    GameObject go_bagGrid;
+    Transform trs_content;
+    public int i_gridCount;
 
-
-    public BagBase(Transform trs_content)
+    public void Init(int gridCount)
     {
+        go_bagGrid = Resources.Load<GameObject>("BagGrid");
         lst_bagGrids = new List<BagGrid>();
         dct_items = new Dictionary<string, BagItem>();
-        gridNumber = trs_content.childCount;
-        for(int i = 0; i<gridNumber; i++)
+        trs_content = transform.Find("content");
+        i_gridCount = gridCount;
+        for (int i = 0; i < i_gridCount; i++)
         {
-            lst_bagGrids.Add(new BagGrid( trs_content.GetChild(i)));
+            GameObject go = Instantiate<GameObject>(go_bagGrid, trs_content);
+            lst_bagGrids.Add(go.GetComponent<BagGrid>());
         }
     }
 

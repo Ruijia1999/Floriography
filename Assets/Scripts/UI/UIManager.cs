@@ -64,7 +64,6 @@ public class UIManager : MonoBehaviour
         if (dic_UI.ContainsKey(name))
         {
             ui = (UIBase)dic_UI[name];
-            ui.OnShowing(args);
             ui.OnShowed(args);
             GetUI<T>().go_UI.SetActive(true);
             return;
@@ -91,7 +90,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void CloseUI(string name)
+    public void CloseUI(string name, params object[] args)
     {
         UIBase ui = (UIBase)dic_UI[name];
 
@@ -100,13 +99,12 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        ui.OnClosing();
+        ui.OnClosing(args);
         ui.go_UI.SetActive(false);
-        ui.OnClosed();
         
     }
 
-    public void DestroyUI(string name)
+    public void DestroyUI(string name, params object[] args)
     {
         UIBase ui = (UIBase)dic_UI[name];
         if (ui == null)
@@ -114,9 +112,9 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        ui.OnClosing();
+        ui.OnClosing(args);
         dic_UI.Remove(name);
-        ui.OnClosed();
+        ui.OnClosed(args);
         GameObject.Destroy(ui.go_UI);
         Component.Destroy(ui);
     }
