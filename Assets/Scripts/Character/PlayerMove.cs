@@ -49,10 +49,13 @@ public class PlayerMove : MonoBehaviour
 
         
 
-        Vector3 direction = new Vector3(horizontal * f_moveSpeed, 0, vertical * f_moveSpeed);
+        Vector3 direction = new Vector3(horizontal, 0, vertical);
         direction = direction.normalized;
+        direction.z /= Mathf.Sin(20* Mathf.Deg2Rad);
+        direction.x /= Mathf.Cos(20 * Mathf.Deg2Rad);
         characterController.Move(new Vector3(0,-f_gravity,0));
-        characterController.Move(direction*f_moveSpeed);
+        Debug.Log(direction);
+        characterController.Move(direction*f_moveSpeed*0.01f);
 
         
         
