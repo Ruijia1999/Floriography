@@ -25,10 +25,10 @@ public class NPCTipUI : UIBase
     public GameObject ShowNPCExclamationMark(Transform trs_NPC)
     {
         //ShowTip(trs_NPC);
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(trs_NPC.position + new Vector3(0, 50, 0)) ;
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(trs_NPC.position + new Vector3(0, 2, 0)) ;
         GameObject go = Instantiate<GameObject>(go_exclamationMark, screenPos, Quaternion.identity, go_UI.transform);
         go.GetComponent<ObjectFollowingUI>().trs_followingObject = trs_NPC;
-        go.GetComponent<ObjectFollowingUI>().vec_offset = new Vector3(0, 50, 0);
+        go.GetComponent<ObjectFollowingUI>().vec_offset = new Vector3(0, 2, 0);
         go.GetComponent<ObjectFollowingUI>().b_isFollowing = true;
         return go;
     }
