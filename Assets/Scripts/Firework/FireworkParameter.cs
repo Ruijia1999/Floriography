@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class FireworkParameter : ScriptableObject
 {
     public ProjectileColor color;
@@ -21,7 +22,6 @@ public enum ProjectileColor
 };
 
 
-[Flags]
 public enum ProjectileBuff
 {
     None = 0,
