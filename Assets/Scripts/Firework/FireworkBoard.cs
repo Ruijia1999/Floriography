@@ -29,11 +29,12 @@ public class FireworkBoard : MonoBehaviour
     {
         TimeSystemController.Instance.Pause();
         PlayerMove.Instance.Disable();
-
+        UIManager.Instance.OpenUI<FireworkSettingUI>("UIPrefabs/FireworkSettingUI");
         UIManager.Instance.GetUI<BackpackUI>().StartSettingFirework();
-        GameObject.Find("Firework").transform.Find("FireworkSetCamera").gameObject.SetActive(true);
-        Camera.main.gameObject.SetActive(false);
-        
+        CameraController.Instance.curCamera = CameraController.Instance.fireworkSetCamera;
+        CameraController.Instance.fireworkSetCamera.gameObject.SetActive(true);
+        CameraController.Instance.mainCamera.gameObject.SetActive(false);
+
     }
 
 }

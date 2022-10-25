@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class BagGrid: MonoBehaviour
 {
@@ -9,9 +10,10 @@ public class BagGrid: MonoBehaviour
     public int i_itemQuantity;
     Image img_item;
     Text txt_itemQuantity;
-
+   
     void Start ()
     {
+        
         s_itemName = "";
         i_itemQuantity = 0;
         img_item = transform.Find("img_item").GetComponent<Image>();
@@ -20,7 +22,6 @@ public class BagGrid: MonoBehaviour
     }
     public int AddItem(string s_name, int i_qauntity)
     {
-
         Sprite tx_Item = Resources.Load<Sprite>("Texture2D/GameItem/" + s_name);
         s_itemName = s_name;
         img_item.sprite = tx_Item;
@@ -43,4 +44,6 @@ public class BagGrid: MonoBehaviour
         i_itemQuantity -= i_itemQuantity;
         return i_itemQuantity;
     }
+    
+    
 }
