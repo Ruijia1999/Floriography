@@ -3,11 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class FireworkParameter : ScriptableObject
+[Serializable]
+public class FireworkParameter
 {
     public ProjectileColor color;
     public ProjectileBuff buff;
+    public FireworkParameter(string color, string buff)
+    {
+        this.color = 0;
+        this.buff = 0;
+    }
 }
 public enum ProjectileColor
 {

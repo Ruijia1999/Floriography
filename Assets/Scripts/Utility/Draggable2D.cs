@@ -1,18 +1,22 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Draggable2D : MonoBehaviour
+using UnityEngine.EventSystems;
+public class Draggable2D : MonoBehaviour, IDragHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool b_isDragged;
+
+    public void Update()
     {
-        
+        if (b_isDragged)
+        {
+            transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z);
+        }
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

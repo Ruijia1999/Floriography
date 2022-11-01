@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class FireworkController : MonoBehaviour
 {
+    public Transform trs;
     public static FireworkController Instance;
     Dictionary<string, FireworkParameter> _allFireworkProperties;
     public FireworkBase _headFirework;
@@ -30,9 +31,11 @@ public class FireworkController : MonoBehaviour
     void Start()
     {
         _headFirework = null;
-        string jsonStr = File.ReadAllText("C: /Users/rjhua/Desktop/DialogAsset/FireworkEnum.json");
-        _allFireworkProperties = JsonUtility.FromJson<Serialization<string, FireworkParameter>>(jsonStr).ToDictionary();
-
+        _curFirework = null;
+        string jsonStr = File.ReadAllText("C:/Users/u1369579/Desktop/Asset/FireworkEnum.json");
+        FireworkParameterJson json = JsonUtility.FromJson<FireworkParameterJson>(jsonStr);
+        _allFireworkProperties = json.infodic;
+        
         return;
     }
 
@@ -71,9 +74,26 @@ public class FireworkController : MonoBehaviour
         }
     }
 
-
-    IEnumerator PlayFirework()
+    public void AddFirework(string name)
     {
+        Vector3 position = CameraController.Instance.fireworkSetCamera.ScreenToWorldPoint(Input.mousePosition);
+        position.y = 0;
+        GameObject firework = Resources.Load<GameObject>("Firework/" + name);
+        firework = Instantiate(firework, position, Quaternion.identity, trs);
+        if (_headFirework == null)
+        {
+            _headFirework = firework.GetComponent<FireworkBase>();
+            _curFirework = _headFirework;
+        }
+        else
+        {
+            _curFirework.nextFirework = firework.GetComponent<FireworkBase>();
+            _curFirework = _curFirework.nextFirework;
+        }
+    }
+    public IEnumerator PlayFirework()
+    {
+        _curFirework = _headFirework;
         while (_curFirework != null)
         {
             yield return InitialVFX(_curFirework);
@@ -83,7 +103,7 @@ public class FireworkController : MonoBehaviour
 
     IEnumerator InitialVFX(FireworkBase firework)
     {
-        GameObject fvx = firework.transform.Find("vfx").gameObject;
+        GameObject fvx = firework.transform.Find("VFX").gameObject;
         SetParameters(_allFireworkProperties[firework.s_name], fvx.GetComponent<VisualEffect>());
         fvx.SetActive(true);
         yield return new WaitForSeconds(1);

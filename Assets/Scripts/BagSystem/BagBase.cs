@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BagBase: MonoBehaviour
 {
-    List<BagGrid> lst_bagGrids;
-    Dictionary<string, BagItem> dct_items;
+    public List<BagGrid> lst_bagGrids;
+    public Dictionary<string, BagItem> dct_items;
     GameObject go_bagGrid;
     Transform trs_content;
     public int i_gridCount;

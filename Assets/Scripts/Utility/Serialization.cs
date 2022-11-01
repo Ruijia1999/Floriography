@@ -1,53 +1,40 @@
-// Serialization.cs
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-// List<T>
-[Serializable]
-public class Serialization<T>
+public class JsonLoad
 {
-    [SerializeField]
-    List<T> target;
-    public List<T> ToList() { return target; }
-
-    public Serialization(List<T> target)
-    {
-        this.target = target;
-    }
+    
 }
 
-// Dictionary<TKey, TValue>
 [Serializable]
-public class Serialization<TKey, TValue> : ISerializationCallbackReceiver
+public class FireworkParameterJson : ISerializationCallbackReceiver
 {
-    [SerializeField]
-    List<TKey> keys;
-    [SerializeField]
-    List<TValue> values;
-
-    Dictionary<TKey, TValue> target;
-    public Dictionary<TKey, TValue> ToDictionary() { return target; }
-
-    public Serialization(Dictionary<TKey, TValue> target)
+    public Dictionary<string, FireworkParameter> infodic;
+    public FireworkParameterJson(Dictionary<string, FireworkParameter> data)
     {
-        this.target = target;
+        this.infodic = data;
+    }
+
+    public List<string> KeyList = new List<string>();
+    public List<FireworkParameter> ValueList = new List<FireworkParameter>();
+    public void OnAfterDeserialize()
+    {
+        infodic = new Dictionary<string, FireworkParameter>();
+        for (int i = 0; i < Math.Min(KeyList.Count, ValueList.Count); i++)
+        {
+            infodic.Add(KeyList[i], ValueList[i]);
+        }
     }
 
     public void OnBeforeSerialize()
     {
-        keys = new List<TKey>(target.Keys);
-        values = new List<TValue>(target.Values);
-    }
-
-    public void OnAfterDeserialize()
-    {
-        var count = Math.Min(keys.Count, values.Count);
-        target = new Dictionary<TKey, TValue>(count);
-        for (var i = 0; i < count; ++i)
+        KeyList.Clear();
+        ValueList.Clear();
+        foreach (var item in infodic)
         {
-            target.Add(keys[i], values[i]);
+            KeyList.Add(item.Key);
+            ValueList.Add(item.Value);
         }
     }
 }
