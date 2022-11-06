@@ -30,11 +30,17 @@ public class FireworkController : MonoBehaviour
     }
     void Start()
     {
+        _allFireworkProperties = new Dictionary<string, FireworkParameter>();
         _headFirework = null;
         _curFirework = null;
-        string jsonStr = File.ReadAllText("C:/Users/u1369579/Desktop/Asset/FireworkEnum.json");
+        string jsonStr = File.ReadAllText("C:/Users/rjhua/Desktop/DialogAsset/FireworkEnum.json");
         FireworkParameterJson json = JsonUtility.FromJson<FireworkParameterJson>(jsonStr);
-        _allFireworkProperties = json.infodic;
+        foreach(var firework in json.infodic)
+        {
+            FireworkParameter pamrater = new(firework.color, firework.buff);
+            _allFireworkProperties.Add(firework.name, pamrater);
+        }
+        
         
         return;
     }

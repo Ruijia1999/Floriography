@@ -3,16 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+
 public class FireworkParameter
 {
+
     public ProjectileColor color;
     public ProjectileBuff buff;
     public FireworkParameter(string color, string buff)
     {
-        this.color = 0;
-        this.buff = 0;
+        this.color = (ProjectileColor)Enum.Parse(typeof(ProjectileColor), color);
+        this.buff = (ProjectileBuff)Enum.Parse(typeof(ProjectileBuff), buff);
     }
+    
 }
 public enum ProjectileColor
 {

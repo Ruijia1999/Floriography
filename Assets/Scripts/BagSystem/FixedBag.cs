@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FixedBag : BagBase
 {
-    int i_columCount; //colum count is fixed;
+    public int i_columCount; //colum count is fixed;
     GridLayoutGroup layout; //The bag layout
     public void SetSize(int columCount)
     {
