@@ -54,7 +54,6 @@ public class PlayerMove : MonoBehaviour
         direction.z /= Mathf.Sin(20* Mathf.Deg2Rad);
         direction.x /= Mathf.Cos(20 * Mathf.Deg2Rad);
         characterController.Move(new Vector3(0,-f_gravity,0));
-        Debug.Log(direction);
         characterController.Move(direction*f_moveSpeed*0.01f);
 
         
@@ -70,13 +69,5 @@ public class PlayerMove : MonoBehaviour
     {
         b_enabled = true;
     }
-    //void OnControllerColliderHit(ControllerColliderHit hit)
-    //{
 
-    //    if (hit != null && hit.collider.tag == "NPC")
-    //    {
-    //        hit.collider.GetComponent<NPCInteraction>().OnPlayerNear();
-    //    }
-
-    //}
 }

@@ -4,22 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//Player use right button to click the board to start setting up firework
-public class FireworkBoard : MonoBehaviour
+public class FireworkBoard:MonoBehaviour
 {
-    Clickable3D _clickableCpt;
-    void Start()
-    {
-        _clickableCpt = gameObject.GetComponent<Clickable3D>();
-        _clickableCpt.Init(null, OpenTip);
-    }
 
-    void Update()
-    {
-        
-    }
-
-    void OpenTip()
+    public void OpenTip()
     {
 
         object[] args = {(UnityAction)StartSettingUp,null, "Ready to start setting up the fireworks?" };

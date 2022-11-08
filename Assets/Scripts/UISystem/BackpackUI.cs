@@ -58,6 +58,7 @@ public class BackpackUI : UIBase
                 Destroy(grid.gameObject.GetComponent<FireworkBagGrid>());
             }
         }
-        bag.SetSize(0);
+        bag.SetSize(bag.i_gridCount);
     }
+    
 }

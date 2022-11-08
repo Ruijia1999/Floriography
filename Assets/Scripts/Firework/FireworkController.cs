@@ -105,6 +105,12 @@ public class FireworkController : MonoBehaviour
             yield return InitialVFX(_curFirework);
             _curFirework = _curFirework.nextFirework;
         }
+        yield return new WaitForSeconds(5);
+        TimeSystemController.Instance.Continue();
+        PlayerMove.Instance.Enable();
+        UIManager.Instance.GetUI<BackpackUI>().EndSettingUpFirework();
+        UIManager.Instance.OpenUI<BackpackUI>("BackpackUI");
+        CameraController.Instance.SwitchTo(CameraController.Instance.mainCamera);
     }
 
     IEnumerator InitialVFX(FireworkBase firework)

@@ -25,6 +25,8 @@ public class FireworkSettingUI : UIBase
 
     void StartPlay()
     {
+        Close();
+        UIManager.Instance.CloseUI("BackpackUI");
         StartCoroutine(FireworkController.Instance.PlayFirework());
         CameraController.Instance.SwitchTo(CameraController.Instance.fireworkPlayCamera);
 
@@ -32,7 +34,10 @@ public class FireworkSettingUI : UIBase
 
     void Return()
     {
-
+        TimeSystemController.Instance.Continue();
+        Close();
+        PlayerMove.Instance.Enable();
+        UIManager.Instance.GetUI<BackpackUI>().EndSettingUpFirework();      
         CameraController.Instance.SwitchTo(CameraController.Instance.mainCamera);
     }
 }
