@@ -17,7 +17,7 @@ public class BackpackUI : UIBase
         trs_leftPos = go_UI.transform.Find("leftPos");
         trs_bottomPos = go_UI.transform.Find("bottomPos");
         bag = go_UI.transform.Find("Bag").GetComponent<FixedBag>();
-        bag.Init(12);
+        bag.Init(true, false, 12);
         bag.transform.localPosition = trs_bottomPos.localPosition;
     }
     public override void OnShowed(params object[] args) { }

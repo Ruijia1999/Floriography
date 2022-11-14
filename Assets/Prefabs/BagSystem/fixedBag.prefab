@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 7745738379771720420}
   - component: {fileID: 2306711846109604119}
   - component: {fileID: 4812773528699572905}
-  - component: {fileID: 455656223098271493}
+  - component: {fileID: 9183784597945316530}
   m_Layer: 5
   m_Name: fixedBag
   m_TagString: Untagged
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &455656223098271493
+--- !u!114 &9183784597945316530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +203,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7082298006795472570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42799a45927c6744ca5ef74107ee8945, type: 3}
+  m_Script: {fileID: 11500000, guid: e4726bd1e45b8cf4aa442f1010414c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lst_bagGrids: []
   i_gridCount: 0
+  i_columCount: 0

@@ -2,21 +2,23 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
-public class Draggable2D : MonoBehaviour, IDragHandler
+public class Draggable2D : MonoBehaviour
 {
     public bool b_isDragged;
+    void Start()
+    {
+        GetComponent<Canvas>().overrideSorting = true;
+        GetComponent<Canvas>().sortingOrder = 1;
 
-    public void Update()
+    }
+    void Update()
     {
         if (b_isDragged)
         {
             transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z);
         }
-    }
-    public void OnDrag(PointerEventData eventData)
-    {
-        transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z);
     }
 
 }
